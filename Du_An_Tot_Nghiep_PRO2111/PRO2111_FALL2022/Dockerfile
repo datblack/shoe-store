@@ -1,0 +1,6 @@
+FROM openjdk:18
+
+ENV TZ Asia/Ho_Chi_Minh
+EXPOSE 8080
+ADD target/PRO2111_FALL2022.war PRO2111_FALL2022.war
+ENTRYPOINT ["java","-jar","PRO2111_FALL2022.war"]

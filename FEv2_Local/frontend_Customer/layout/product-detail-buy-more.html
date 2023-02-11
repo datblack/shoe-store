@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- molla/product.html  22 Nov 2019 09:54:50 GMT -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Molla - Bootstrap eCommerce Template</title>
+    <meta name="keywords" content="HTML5 Template">
+    <meta name="description" content="Molla - Bootstrap eCommerce Template">
+    <meta name="author" content="p-themes">
+    <!-- Favicon -->
+</head>
+
+<body>
+    <div class="page-wrapper">
+        <main class="main">
+
+            <div class="page-content">
+                <div class="container">
+                    <div class="product-details-top">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="product-gallery product-gallery-vertical">
+                                    <div class="row">
+                                        <figure class="product-main-image">
+                                            <img id="product-zoom" src="http://buiquanghieu.xyz/TestSendMail/assets/images/product/{{imageSelected.imagePath}}"
+                                                data-zoom-image="assets/images/products/single/1-big.jpg"
+                                                alt="product image">
+
+                                            <a href="#" id="btn-product-gallery" class="btn-product-gallery">
+                                                <i class="icon-arrows"></i>
+                                            </a>
+                                        </figure><!-- End .product-main-image -->
+
+                                        <div id="product-zoom-gallery" class="product-image-gallery">
+                                            <a class="product-gallery-item active" ng-repeat="image in images" ng-click="selectImage(image)" style="cursor: pointer;"
+                                                data-image="http://buiquanghieu.xyz/TestSendMail/assets/images/product/{{image.imagePath}}"
+                                                data-zoom-image="http://buiquanghieu.xyz/TestSendMail/assets/images/product/{{image.imagePath}}">
+                                                <img src="http://buiquanghieu.xyz/TestSendMail/assets/images/product/{{image.imagePath}}" alt="product side">
+                                            </a>
+
+                                          
+                                        </div><!-- End .product-image-gallery -->
+                                    </div><!-- End .row -->
+                                </div><!-- End .product-gallery -->
+                            </div><!-- End .col-md-6 -->
+
+                            <div class="col-md-6">
+                                <div class="product-details">
+                                    <h1 class="product-title">{{product.productName}}
+                                    </h1><!-- End .product-title -->
+
+                                    <div class="product-price">
+                                        <span ng-if="productVariants == undefined">{{price}}</span>
+                                        <span ng-if="priceSale == 0 && productVariants != undefined">{{productVariants.price |
+                                            number}} VND</span>
+                                        <div ng-if="priceSale != undefined && priceSale != 0 && productVariants != undefined">
+                                            <label style="text-decoration: line-through;">{{productVariants.price |
+                                                number}} VND</label>
+                                            <span>{{priceSale | number}} VND</span>
+                                        </div>
+                                    </div><!-- End .product-price -->
+                                    <!-- Detail option -->
+                                    <div class="option-detail mb-2">
+                                        <div ng-repeat="optionMain in options_main">
+                                            <label for="qty" style="float: left;">{{optionMain.option.optionName}}
+                                                :</label>
+                                            <!-- <label for="">{{options_main.length > 3 ? "2":"1"}}</label> -->
+                                            <div class="option-value">
+                                                <button ng-repeat="optionVal in optionMain.optionValues"
+                                                    id="valueId{{optionVal.valueId}}"
+                                                    class="option{{optionMain.option.optionId}} btn btn-outline-warning m-2 btn-option"
+                                                    ng-click="onSelect(optionVal.valueId , optionMain.option.optionId)">{{optionVal.valueName}}</button>
+                                            </div>
+                                        </div>
+                                        <div class="row" style="margin-left: 0px; font-size: 15px;">
+                                            <label for="">Số lượng: </label>
+                                            <input class="form-control" style="width:130px; margin:0 1rem 0 1rem;" type="number" min="1" max="{{productVariants.quantity}}" ng-model="quantity">
+                                            <span style="line-height: 40px; color: #b7b7b7;">Số lượng còn lại: {{productVariants.quantity}}</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- End Deitail option -->
+                                    <div class="product-details-action">
+                                        <a id="addCart" href="" ng-click="addToCart()"
+                                            class="btn-product btn-cart"><span>Thêm mới sản phẩm</span></a>
+                                    </div><!-- End .product-details-action -->
+                                </div><!-- End .product-details -->
+                            </div><!-- End .col-md-6 -->
+                        </div><!-- End .row -->
+                    </div><!-- End .product-details-top -->
+
+                    
+                </div><!-- End .container -->
+            </div><!-- End .page-content -->
+        </main><!-- End .main -->
+    </div><!-- End .modal -->
+
+    <!-- Plugins JS File -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/jquery.hoverIntent.min.js"></script>
+    <script src="assets/js/jquery.waypoints.min.js"></script>
+    <script src="assets/js/superfish.min.js"></script>
+    <script src="assets/js/owl.carousel.min.js"></script>
+    <script src="assets/js/bootstrap-input-spinner.js"></script>
+    <script src="assets/js/jquery.elevateZoom.min.js"></script>
+    <script src="assets/js/bootstrap-input-spinner.js"></script>
+    <script src="assets/js/jquery.magnific-popup.min.js"></script>
+    <!-- Main JS File -->
+    <script src="assets/js/main.js"></script>
+
+</body>
+
+
+<!-- molla/product.html  22 Nov 2019 09:55:05 GMT -->
+
+</html>

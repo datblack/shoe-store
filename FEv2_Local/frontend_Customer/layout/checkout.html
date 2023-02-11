@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- molla/checkout.html  22 Nov 2019 09:55:06 GMT -->
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Molla - Bootstrap eCommerce Template</title>
+	<meta name="keywords" content="HTML5 Template">
+	<meta name="description" content="Molla - Bootstrap eCommerce Template">
+	<meta name="author" content="p-themes">
+	<!-- Favicon -->
+	<link rel="apple-touch-icon" sizes="180x180" href="assets/images/icons/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="assets/images/icons/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="assets/images/icons/favicon-16x16.png">
+	<link rel="manifest" href="assets/images/icons/site.html">
+	<link rel="mask-icon" href="assets/images/icons/safari-pinned-tab.svg" color="#666666">
+	<link rel="shortcut icon" href="assets/images/icons/favicon.ico">
+	<meta name="apple-mobile-web-app-title" content="Molla">
+	<meta name="application-name" content="Molla">
+	<meta name="msapplication-TileColor" content="#cc9966">
+	<meta name="msapplication-config" content="assets/images/icons/browserconfig.xml">
+	<meta name="theme-color" content="#ffffff">
+	<!-- Plugins CSS File -->
+	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+	<!-- Main CSS File -->
+	<link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+	<div class="page-wrapper">
+		<main class="main">
+			<div ng-show="isLoading" class="loading">
+				<div class="spinner-border text-primary spinner-center" role="status">
+				</div>
+			</div>
+			<div class="page-header text-center" style="background-image: url('assets/images/page-header-bg.jpg')">
+				<div class="container">
+					<h1 class="page-title">Checkout<span>Shop</span></h1>
+				</div><!-- End .container -->
+			</div><!-- End .page-header -->
+			<nav aria-label="breadcrumb" class="breadcrumb-nav">
+				<div class="container">
+					<ol class="breadcrumb">
+						<li class="breadcrumb-item"><a href="index.html">Home</a></li>
+						<li class="breadcrumb-item"><a href="#">Shop</a></li>
+						<li class="breadcrumb-item active" aria-current="page">Checkout</li>
+					</ol>
+				</div><!-- End .container -->
+			</nav><!-- End .breadcrumb-nav -->
+
+			<div class="page-content">
+				<div class="checkout">
+					<div class="container">
+						<div class="row">
+							<div class="col-lg-9">
+								<h2 class="checkout-title">Chi tiết hóa đơn</h2><!-- End .checkout-title -->
+								<div class="row">
+									<div class="col-sm-6">
+										<label>Họ và tên *</label>
+										<input type="text" class="form-control" ng-model="user.fullName" readonly>
+									</div><!-- End .col-sm-6 -->
+
+									<div class="col-sm-6">
+										<label>Số điện thoại *</label>
+										<input type="text" class="form-control" ng-model="user.phone">
+										<div>
+											<span ng-if="messagePhone != ''"
+												style="color: red; font-style: italic;">{{messagePhone}}</span>
+										</div>
+									</div><!-- End .col-sm-6 -->
+								</div><!-- End .row -->
+								<div class="row m-0">
+									<label>Email address *</label>
+									<input type="email" class="form-control" ng-model="user.email" readonly>
+								</div>
+								<!-- <label>Company Name (Optional)</label>
+	            						<input type="text" class="form-control">
+
+	            						<label>Country *</label>
+	            						<input type="text" class="form-control" required> -->
+
+								<!-- <label>Địa chỉ chi tiết *</label>
+	            						<input type="text" class="form-control" placeholder="Số nhà, tên đường ...">
+	            						<input type="text" class="form-control" placeholder="Appartments, suite, unit etc ..."> -->
+
+								<div class="row">
+									<div class="col-sm-6">
+										<label>Tỉnh / Thành phố *</label>
+										<select class="form-control" ng-model="address.division"
+											ng-change="changeDivision(address.division)" 
+											ng-options="division as division.ProvinceName for division in lstDivision track by division.ProvinceID">
+											<option value="" disabled selected>Mời chọn Tỉnh / Thành phố</option>
+											<!-- <option ng-repeat="division in lstDivision" ng-value="{{division}}">
+												{{division.ProvinceName}}</option> -->
+										</select>
+									</div><!-- End .col-sm-6 -->
+
+									<div class="col-sm-6">
+										<label>Quận / Huyện *</label>
+										<select class="form-control" ng-model="address.district"
+											ng-change="changeDistrict(address.district)"
+											ng-options="district as district.DistrictName for district in lstDistrict track by district.DistrictID">
+											<option value="" disabled selected>Mời chọn Quận / Huyện</option>
+											<!-- <option ng-repeat="district in lstDistrict" ng-value="{{district}}">
+												{{district.DistrictName}}</option> -->
+										</select>
+									</div><!-- End .col-sm-6 -->
+								</div><!-- End .row -->
+
+								<div class="row">
+									<div class="col-sm-6">
+										<label>Xã / Phường *</label>
+										<select class="form-control" ng-model="address.ward"
+											ng-change="changeWard(address.ward)"
+											ng-options="ward as ward.WardName for ward in lstWard track by ward.WardCode">
+											<option value="" disabled selected>Mời chọn Xã / Phường</option>
+											<!-- <option ng-repeat="ward in lstWard" ng-value="{{ward}}">
+												{{ward.WardName}}</option> -->
+										</select>
+									</div><!-- End .col-sm-6 -->
+
+									<div class="col-sm-6">
+										<label>Địa chỉ chi tiết *</label>
+										<input type="text" class="form-control" ng-model="bill.address">
+									</div><!-- End .col-sm-6 -->
+								</div><!-- End .row -->
+								<div class="row m-0">
+									<div>
+										<span ng-if="messageAddress != ''"
+											style="color: red; font-style: italic;">{{messageAddress}}</span>
+									</div>
+								</div>
+
+
+								<!-- <div class="custom-control custom-checkbox">
+											<input type="checkbox" class="custom-control-input" id="checkout-create-acc">
+											<label class="custom-control-label" for="checkout-create-acc">Create an account?</label>
+										</div>
+
+										<div class="custom-control custom-checkbox">
+											<input type="checkbox" class="custom-control-input" id="checkout-diff-address">
+											<label class="custom-control-label" for="checkout-diff-address">Ship to a different address?</label>
+										</div> -->
+
+								<!-- <label>Order notes (optional)</label>
+	        							<textarea class="form-control" cols="30" rows="4" placeholder="Notes about your order, e.g. special notes for delivery"></textarea> -->
+							</div><!-- End .col-lg-9 -->
+							<aside class="col-lg-3">
+								<div class="summary">
+									<h3 class="summary-title">Hóa đơn của bạn</h3><!-- End .summary-title -->
+
+									<table class="table table-summary">
+										<thead>
+											<tr>
+												<th>Sản phẩm</th>
+												<th>Tổng tiền</th>
+											</tr>
+										</thead>
+
+										<tbody>
+											<tr ng-repeat="cartDetail in $parent.cartDetailChecked">
+												<td>
+													{{cartDetail.productVariants.products.productName}}
+													<p ng-repeat="values in cartDetail.variantValues"
+														style="font-family: sans-serif;">
+														{{values.productOptions.options.optionName}}:
+														{{values.optionValues.valueName}}
+													</p>
+												</td>
+												<td>{{cartDetail.productVariants.price * (cartDetail.productVariants.tax
+													+ 100) / 100 | number}}</td>
+											</tr>
+											<tr class="summary-subtotal">
+												<td>Tổng tiền sản phẩm:</td>
+												<td>{{totalMoney | number}}</td>
+											</tr><!-- End .summary-subtotal -->
+											<tr>
+												<td>Phí ship:</td>
+												<td>{{bill.shippingFee | number}}</td>
+											</tr>
+											<tr>
+												<td for="" class="form-lable col-6">Đơn vị vận chuyển:</td>
+												<td ng-if="bill.shippingFee !='' "><img src="\images\logo\ghn.png" ></td>
+											</tr>
+											<tr class="summary-total">
+												<td>Tổng thanh toán:</td>
+												<td>{{totalMoney + bill.shippingFee | number}}</td>
+											</tr><!-- End .summary-total -->
+										</tbody>
+									</table><!-- End .table table-summary -->
+
+									<div class="accordion-summary" id="accordion-payment">
+										<div class="row m-0">
+											<div class="form-check">
+												<input class="form-check-input" type="radio" name="payment"
+													id="exampleRadios1" value="0" convert-to-number
+													ng-checked="bill.payments == 0" ng-model="bill.payments">
+												<label class="form-check-label" for="exampleRadios1">
+													&ensp;Khi nhận hàng
+												</label>
+											</div>
+										</div>
+
+										<div class="row m-0">
+											<div class="form-check">
+												<input class="form-check-input" type="radio" name="payment"
+													id="exampleRadios2" value="1" convert-to-number
+													ng-checked="bill.payments == 1" ng-model="bill.payments">
+												<label class="form-check-label" for="exampleRadios2">
+													&ensp;Banking
+												</label>
+											</div>
+										</div>
+										<!-- <div class="card">
+												<div class="card-header" id="heading-1">
+													<h2 class="card-title">
+														<a role="button" data-toggle="collapse" href="#collapse-1"
+															aria-expanded="true" aria-controls="collapse-1">
+															Direct bank transfer
+														</a>
+													</h2>
+												</div>
+												<div id="collapse-1" class="collapse show" aria-labelledby="heading-1"
+													data-parent="#accordion-payment">
+													<div class="card-body">
+														Make your payment directly into our bank account. Please use
+														your Order ID as the payment reference. Your order will not be
+														shipped until the funds have cleared in our account.
+													</div>
+												</div>
+											</div> -->
+
+									</div><!-- End .card -->
+								</div><!-- End .accordion -->
+
+								<button ng-click="submitOrder()" class="btn btn-outline-primary-2 btn-order btn-block">
+									<span class="btn-text">Đặt hàng</span>
+									<span class="btn-hover-text">Kiểm tra đặt hàng</span>
+								</button>
+						</div><!-- End .summary -->
+						</aside><!-- End .col-lg-3 -->
+					</div><!-- End .row -->
+				</div><!-- End .container -->
+			</div><!-- End .checkout -->
+	</div><!-- End .page-content -->
+	</main><!-- End .main -->
+	</div>
+	<!-- Plugins JS File -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/bootstrap.bundle.min.js"></script>
+	<script src="assets/js/jquery.hoverIntent.min.js"></script>
+	<script src="assets/js/jquery.waypoints.min.js"></script>
+	<script src="assets/js/superfish.min.js"></script>
+	<script src="assets/js/owl.carousel.min.js"></script>
+	<!-- Main JS File -->
+	<script src="assets/js/main.js"></script>
+</body>
+
+
+<!-- molla/checkout.html  22 Nov 2019 09:55:06 GMT -->
+
+</html>

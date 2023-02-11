@@ -1,0 +1,304 @@
+<body>
+    <div class="page-wrapper">
+        <main class="main">
+            <div ng-show="isLoading" class="loading">
+                <div class="spinner-border text-primary spinner-center" role="status">
+                </div>
+            </div>
+            <div class="page-header text-center" style="background-image: url('assets/images/page-header-bg.jpg')">
+                <div class="container">
+                    <h1 class="page-title">Sản phẩm<span>Bluv</span></h1>
+                </div><!-- End .container -->
+            </div><!-- End .page-header -->
+            <nav aria-label="breadcrumb" class="breadcrumb-nav mb-2">
+                <div class="container">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Trang chủ</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Sản phẩm</li>
+                    </ol>
+                </div><!-- End .container -->
+            </nav><!-- End .breadcrumb-nav -->
+
+            <div class="page-content">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-9">
+                            <div class="toolbox">
+                                <!-- <div class="toolbox-left">
+                                    <div class="toolbox-info">
+                                        Showing <span>9 of 56</span> Products
+                                    </div>
+                                </div> -->
+
+                                <!-- <div class="toolbox-right">
+                                    <div class="toolbox-sort">
+                                        <label for="sortby">Sắp xếp:</label>
+                                        <div class="select-custom">
+                                            <select name="sortby" id="sortby" class="form-control">
+                                                <option value="popularity" selected="selected">Most Popular</option>
+                                                <option value="rating">Most Rated</option>
+                                                <option value="date">Date</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="toolbox-layout">
+                                        <a href="category-list.html" class="btn-layout">
+                                            <svg width="16" height="10">
+                                                <rect x="0" y="0" width="4" height="4" />
+                                                <rect x="6" y="0" width="10" height="4" />
+                                                <rect x="0" y="6" width="4" height="4" />
+                                                <rect x="6" y="6" width="10" height="4" />
+                                            </svg>
+                                        </a>
+
+                                        <a href="category-2cols.html" class="btn-layout">
+                                            <svg width="10" height="10">
+                                                <rect x="0" y="0" width="4" height="4" />
+                                                <rect x="6" y="0" width="4" height="4" />
+                                                <rect x="0" y="6" width="4" height="4" />
+                                                <rect x="6" y="6" width="4" height="4" />
+                                            </svg>
+                                        </a>
+
+                                        <a href="category.html" class="btn-layout">
+                                            <svg width="16" height="10">
+                                                <rect x="0" y="0" width="4" height="4" />
+                                                <rect x="6" y="0" width="4" height="4" />
+                                                <rect x="12" y="0" width="4" height="4" />
+                                                <rect x="0" y="6" width="4" height="4" />
+                                                <rect x="6" y="6" width="4" height="4" />
+                                                <rect x="12" y="6" width="4" height="4" />
+                                            </svg>
+                                        </a>
+
+                                        <a href="category-4cols.html" class="btn-layout active">
+                                            <svg width="22" height="10">
+                                                <rect x="0" y="0" width="4" height="4" />
+                                                <rect x="6" y="0" width="4" height="4" />
+                                                <rect x="12" y="0" width="4" height="4" />
+                                                <rect x="18" y="0" width="4" height="4" />
+                                                <rect x="0" y="6" width="4" height="4" />
+                                                <rect x="6" y="6" width="4" height="4" />
+                                                <rect x="12" y="6" width="4" height="4" />
+                                                <rect x="18" y="6" width="4" height="4" />
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div> -->
+                                <!-- End .toolbox-right -->
+                            </div><!-- End .toolbox -->
+
+                            <div class="products mb-3">
+                                <div class="row justify-content-center">
+                                    <div class="col-sm-4 col-xl-3" ng-repeat="pro in products">
+                                        <div class="product product-7 text-center">
+                                            <figure class="product-media" style="height: 170px;">
+                                                <!-- <span class="product-label label-new">New</span> -->
+                                                <a href="#!product/{{pro.productId}}/{{pro.productName}}">
+                                                    <img src="http://buiquanghieu.xyz/TestSendMail/assets/images/product/{{pro.images[0].imagePath}}"
+                                                        alt="Product image" class="product-image">
+                                                </a>
+
+                                                <!-- <div class="product-action-vertical">
+                                                    <a href="#"
+                                                        class="btn-product-icon btn-wishlist btn-expandable"><span>add
+                                                            to wishlist</span></a>
+                                                    <a href="popup/quickView.html"
+                                                        class="btn-product-icon btn-quickview"
+                                                        title="Quick view"><span>Quick view</span></a>
+                                                    <a href="#" class="btn-product-icon btn-compare"
+                                                        title="Compare"><span>Compare</span></a>
+                                                </div>End .product-action-vertical -->
+
+                                                <div class="product-action">
+                                                    <a href="#!product/{{pro.productId}}/{{pro.productName}}"
+                                                        class="btn-product btn-cart"><span>add to
+                                                            cart</span></a>
+                                                </div><!-- End .product-action -->
+                                            </figure><!-- End .product-media -->
+
+                                            <div class="product-body">
+                                                <!-- <div class="product-cat">
+                                                    <a href="#">Women</a>
+                                                </div>End .product-cat -->
+                                                <h3 class="product-title"><a
+                                                        href="#!product/{{pro.productId}}/{{pro.productName}}"
+                                                        ng-click="mapToRoot(pro)">{{pro.productName}}</a>
+                                                </h3><!-- End .product-title -->
+                                                <!-- <div class="product-price">
+                                                    05
+                                                </div>End .product-price -->
+                                                <!-- <div class="ratings-container">
+                                                    <div class="ratings">
+                                                        <div class="ratings-val" style="width: 20%;"></div>
+                                                        End .ratings-val
+                                                    </div>End .ratings
+                                                    <span class="ratings-text">( 2 Reviews )</span>
+                                                </div>End .rating-container -->
+
+                                                <div class="product-nav product-nav-thumbs">
+                                                    <!-- <a href="#!product/{{pro.productId}}/{{pro.productName}}"
+                                                        class="active">
+                                                        <img src="assets/images/products/product-4-thumb.jpg"
+                                                            alt="product desc">
+                                                    </a>
+                                                    <a href="#!product/{{pro.productId}}/{{pro.productName}}">
+                                                        <img src="assets/images/products/product-4-2-thumb.jpg"
+                                                            alt="product desc">
+                                                    </a>
+
+                                                    <a href="#!product/{{pro.productId}}/{{pro.productName}}">
+                                                        <img src="assets/images/products/product-4-3-thumb.jpg"
+                                                            alt="product desc">
+                                                    </a> -->
+                                                    <a href="#!product/{{pro.productId}}/{{pro.productName}}"
+                                                        ng-repeat="img in pro.images | limitTo: 3 : 0">
+                                                        <img src="http://buiquanghieu.xyz/TestSendMail/assets/images/product/{{img.imagePath}}"
+                                                            alt="product desc">
+                                                    </a>
+                                                </div><!-- End .product-nav -->
+                                            </div><!-- End .product-body -->
+                                        </div><!-- End .product -->
+                                    </div><!-- End .col-sm-6 col-lg-4 col-xl-3 -->
+
+
+
+                                </div><!-- End .row -->
+                            </div><!-- End .products -->
+
+                            <nav aria-label="Page navigation">
+                                <ul class="pagination justify-content-center">
+                                    <li class="page-item {{currentPage == 1 ? 'disabled':''}}">
+                                        <a class="page-link page-link-prev" href="" aria-label="Previous" tabindex="-1"
+                                            aria-disabled="true" ng-click="prevListPage()">
+                                            <span aria-hidden="true"><i class="icon-long-arrow-left"></i></span>Prev
+                                        </a>
+                                    </li>
+
+                                    <li class="page-item {{currentPage ==page?'active':''}}" 
+                                        aria-current="page"
+                                        ng-repeat="page in listPage">
+                                        <a class="page-link" href="" ng-click="selectPage(page)">
+                                            {{page}}
+                                        </a>
+                                    </li>
+
+                                    <li class="page-item-total">of {{totalPage}}</li>
+                                    <li class="page-item {{totalPage<=endListPage ? 'disabled':''}}">
+                                        <a class="page-link page-link-next" href="" aria-label="Next"
+                                            ng-click="nextListPage()">
+                                            Next <span aria-hidden="true"><i class="icon-long-arrow-right"></i></span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
+
+                        </div><!-- End .col-lg-9 -->
+                        <aside class="col-lg-3 order-lg-first">
+                            <div class="accordion" id="accordionExample">
+                                <div class="widget widget-clean">
+                                    <label>Lọc:</label>
+                                    <a ng-click="removeFilterProduct()" href="" class="sidebar-filter-clear">Xóa lọc</a>
+                                </div><!-- End .widget widget-clean -->
+
+                                <div class="widget widget-collapsible" ng-repeat="option in listOptionOfFilters">
+                                    <h6 class="widget-title" id="widget-title{{option.optionId}}">
+                                        <a ng-click="showFilterOption(option.optionId)" data-toggle="collapse" href=""
+                                            role="button" aria-expanded="true">
+                                            {{option.optionName}}
+                                        </a>
+                                    </h6><!-- End .widget-title -->
+
+                                    <div class="collapse" id="optionFilter{{option.optionId}}">
+                                        <div class="widget-body">
+                                            <div class="filter-items filter-items-count">
+                                                <div class="filter-item" ng-repeat="ov in option.optionValues">
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input"
+                                                            name="option-value-selected" id="{{ov.valueId}}"
+                                                            value="{{ov}}">
+                                                        <label class="custom-control-label"
+                                                            for="{{ov.valueId}}">{{ov.valueName}}</label>
+                                                    </div><!-- End .custom-checkbox -->
+                                                    <!-- <span class="item-count">3</span> -->
+                                                </div><!-- End .filter-item -->
+                                            </div><!-- End .filter-items -->
+                                        </div><!-- End .widget-body -->
+                                    </div><!-- End .collapse -->
+                                </div><!-- End .widget -->
+
+
+                                <div class="widget widget-collapsible">
+                                    <h3 class="widget-title widget-title widget-title-price">
+                                        <a ng-click="showFilterPrice()" data-toggle="collapse" href="" role="button"
+                                            aria-expanded="true" aria-controls="collapsePrice">
+                                            KHOẢNG GIÁ
+                                        </a>
+                                    </h3><!-- End .widget-title -->
+
+                                    <div class="collapse" id="collapsePrice">
+                                        <div class="widget-body">
+                                            <p>
+                                                <input type="text" id="amount" readonly
+                                                    style="border:0; color:#000000; font-weight:bold;">
+                                            </p>
+
+                                            <div id="slider-range"></div>
+                                        </div><!-- End .widget-body -->
+                                    </div><!-- End .collapse -->
+                                </div><!-- End .widget -->
+                                <button ng-click="filterProduct()" class="btn btn-dark rounded-pill"> Lọc
+                                </button>
+                            </div><!-- End .sidebar sidebar-shop -->
+                        </aside><!-- End .col-lg-3 -->
+                    </div><!-- End .row -->
+                </div><!-- End .container -->
+            </div><!-- End .page-content -->
+        </main><!-- End .main -->
+        <!-- Plugins JS File -->
+        <style>
+            .ui-widget-header {
+                background: #6666667a
+            }
+
+            .ui-corner-all,
+            .ui-corner-bottom,
+            .ui-corner-right,
+            .ui-corner-br {
+                border-radius: 50px;
+            }
+
+            .ui-state-default,
+            .ui-widget-content .ui-state-default,
+            .ui-widget-header .ui-state-default,
+            .ui-button,
+            html .ui-button.ui-state-disabled:hover,
+            html .ui-button.ui-state-disabled:active {
+                background: #666;
+            }
+
+            .ui-widget-content {
+                background: #f1f1f1;
+            }
+
+            .ui-widget.ui-widget-content {
+                border: 1px solid #ffffff;
+            }
+
+            .ui-widget {
+                font-size: 0.9em;
+            }
+        </style>
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/bootstrap.bundle.min.js"></script>
+        <script src="assets/js/jquery.hoverIntent.min.js"></script>
+        <script src="assets/js/jquery.waypoints.min.js"></script>
+        <script src="assets/js/superfish.min.js"></script>
+        <script src="assets/js/owl.carousel.min.js"></script>
+        <script src="assets/js/wNumb.js"></script>
+        <script src="assets/js/bootstrap-input-spinner.js"></script>
+        <script src="assets/js/jquery.magnific-popup.min.js"></script>
+        <script src="assets/js/nouislider.min.js"></script>
+        <!-- Main JS File -->
+        <script src="assets/main.js"></script>
+</body>
